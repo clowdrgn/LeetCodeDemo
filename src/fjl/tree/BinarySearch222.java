@@ -1,4 +1,4 @@
-package fjl.Tree;
+package fjl.tree;
 //Given a complete binary tree, count the number of nodes.
 //Definition of a complete binary tree from Wikipedia:
 //In a complete binary tree every level, except possibly the last, is completely filled, and all nodes in the last level are as far left as possible. It can have between 1 and 2h nodes inclusive at the last level h.
@@ -6,7 +6,7 @@ package fjl.Tree;
 //Hide Tags Tree Binary Search
 //Hide Similar Problems (E) Closest Binary Search Tree Value
 
-public class BinarySearch {
+public class BinarySearch222 {
 	/**
 	 * Definition for a binary tree node. public class TreeNode { int val;
 	 * TreeNode left; TreeNode right; TreeNode(int x) { val = x; } }
@@ -18,7 +18,7 @@ public class BinarySearch {
 		 * 左节点为根节点*2，右节点为根节点*2+1.因此只要找到最后一个节点的编号，即为节点个数。
 		 * @return
 		 */
-		public int countNodes0(TreeNode root) {
+		public int countNodes0(TreeNode222 root) {
 			return root == null ? 0 : findLastIndex(root, 1);
 		}
 
@@ -28,7 +28,7 @@ public class BinarySearch {
 		 * 没有子节点，高度为0.
 		 * @return
 		 */
-		private int lHeight(TreeNode node, int count) {
+		private int lHeight(TreeNode222 node, int count) {
 			return node == null ? count - 1 : lHeight(node.left, count + 1);
 		}
 
@@ -38,7 +38,7 @@ public class BinarySearch {
 		 * 找到最后一个节点编号。
 		 * @return
 		 */
-		private int findLastIndex(TreeNode node, int currIndex) {
+		private int findLastIndex(TreeNode222 node, int currIndex) {
 			if (node.left == null && node.right == null)
 				return currIndex;
 			if (lHeight(node.left, 1) == lHeight(node.right, 1))
@@ -47,7 +47,7 @@ public class BinarySearch {
 				return findLastIndex(node.left, currIndex * 2);
 		}
 
-		public int countNodes(TreeNode root) {
+		public int countNodes(TreeNode222 root) {
 			if (root == null)
 				return 0;
 			int l = oneSide(root.left); // 计算左子树的高度
@@ -63,7 +63,7 @@ public class BinarySearch {
 		 * @param 传入一棵树计算高度
 		 * @return
 		 */
-		public int oneSide(TreeNode left) {
+		public int oneSide(TreeNode222 left) {
 			int height = 0;
 			while (left != null) {
 				left = left.left;
@@ -80,11 +80,11 @@ public class BinarySearch {
 		 * 若等于，则最后节点在右子树，若不等，则最后节点在左子树。
 		 * @return
 		 */
-		public int countNodes1(TreeNode root) {
+		public int countNodes1(TreeNode222 root) {
 			if (root == null) {
 				return 0;
 			}
-			TreeNode node = root.left;
+			TreeNode222 node = root.left;
 			int height = 0;
 			while (node != null) {
 				node = node.left;
